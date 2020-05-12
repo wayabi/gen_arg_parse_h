@@ -29,8 +29,6 @@ void write_0(ostream& o)
 	o << "class arg_parse {" << endl;
 	o << endl;
 	o << "public:" << endl;
-	o << "\tstd::string log_level_;" << endl;
-	o << "\tint log_file_;" << endl;
 }
 
 void write_1(ostream& o)
@@ -41,8 +39,6 @@ void write_1(ostream& o)
 	o << "\t\tusing namespace boost::program_options;" << endl;
 	o << "\t\toptions_description opt(\"opt\");" << endl;
 	o << "\t\topt.add_options()" << endl;
-	o << "\t\t\t(\"log_level\", value<std::string>()->default_value(\"debug\"), \"log level\")" << endl;
-	o << "\t\t\t(\"log_file\", value<int>()->default_value(0), \"flag output log to file\")" << endl;
 }
 
 void write_2(ostream& o)
@@ -52,8 +48,6 @@ void write_2(ostream& o)
 	o << "\t\ttry{" << endl;
 	o << "\t\t\tstore(parse_command_line(argc, argv, opt), vm);" << endl;
 	o << "\t\t\tnotify(vm);" << endl;
-	o << "\t\t\tlog_level_ = vm[\"log_level\"].as<std::string>();" << endl;
-	o << "\t\t\tlog_file_ = vm[\"log_file\"].as<int>();" << endl;
 }
 
 void write_3(ostream& o)
@@ -97,11 +91,11 @@ int main(int argc, char** argv)
 		if(name.size() == 0) continue;
 		arg_param p;
 		p.name_ = name;
-		if(type == "string"){
+		if(type == "string" || type == "s"){
 			p.type_ = "std::string";
-		}else if(type == "int"){
+		}else if(type == "int" || type == "i"){
 			p.type_ = "int";
-		}else if(type == "double"){
+		}else if(type == "double" || type == "d"){
 			p.type_ = "double";
 		}
 		if(p.type_.size() == 0) continue;
