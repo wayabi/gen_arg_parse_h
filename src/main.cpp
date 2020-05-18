@@ -84,10 +84,13 @@ int main(int argc, char** argv)
 
 	for(int i=1;i<argc;++i){
 		auto ss = Util::split(string(*(argv+i)), ',');
-		if(ss.size() != 3) continue;
+		if(ss.size() < 2) continue;
 		string name = ss[0];
 		string type = ss[1];
-		string default_value = ss[2];
+		string default_value = "";
+		if(ss.size() >= 3){
+			default_value = ss[2];
+		}
 		if(name.size() == 0) continue;
 		arg_param p;
 		p.name_ = name;
