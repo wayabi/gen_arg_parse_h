@@ -183,7 +183,12 @@ vector<string> Util::split(string source, char delimiter)
 	const char *c = source.c_str();
 	for(int i=0;i<size;++i){
 		if(i==size-1){
-			v_ret.push_back(string(c, index, i-index+1));
+			if(*(c+i) == delimiter){
+				v_ret.push_back(string(c, index, i-index));
+				v_ret.push_back(string(""));
+			}else{
+				v_ret.push_back(string(c, index, i-index+1));
+			}
 		}else if(*(c+i) == delimiter){
 			v_ret.push_back(string(c, index, i-index));
 			index = i+1;
