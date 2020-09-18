@@ -34,7 +34,7 @@ void write_0(ostream& o)
 void write_1(ostream& o)
 {
 	o << "public:" << endl;
-	o << "\tstd::string parse(int argc, char** argv)" << endl;
+	o << "\tstd::string parse(int argc, const char** argv)" << endl;
 	o << "\t{" << endl;
 	o << "\t\tusing namespace boost::program_options;" << endl;
 	o << "\t\toptions_description opt(\"opt\");" << endl;
@@ -134,5 +134,7 @@ int main(int argc, char** argv)
 		o << "\t\to << \"" << ite->name_ << "[" << ite->type_ << "]: \" << " << ite->name_ << " << std::endl;" << endl;
 	}
 	write_5(o);
+
+	cout << "Add -lboost_program_options to compiler options" << endl;
 	return 0;
 }
