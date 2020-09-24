@@ -135,6 +135,6 @@ int main(int argc, char** argv)
 	}
 	write_5(o);
 
-	cout << "Add -lboost_program_options to compiler options" << endl;
+	cerr << "Add -lboost_program_options to compiler options" << endl;
 	return 0;
 }

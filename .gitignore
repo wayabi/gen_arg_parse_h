@@ -2,5 +2,4 @@ gen_arg_parse_h
 /obj/
 src/*.swp
 mm_loop.sh
-tmp/*
 tmp
